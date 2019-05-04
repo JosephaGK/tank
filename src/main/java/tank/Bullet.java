@@ -20,17 +20,17 @@ public class Bullet {
 	/**
 	 * 子弹位置
 	 */
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 	/**
 	 * 子弹方向
 	 */
-	private Dir dir;
+	protected Dir dir;
 
 	/**
 	 * 是否存活
 	 */
-	private boolean live = true;
+	protected boolean live = true;
 
 	TankClient tf = null;
 
@@ -51,19 +51,19 @@ public class Bullet {
 //		g.fillOval(x, y, WIDTH, HEIGHT);
 //		g.setColor(c);
 		if(Dir.LEFT.equals(dir)){
-			g.drawImage(ResourceManager.bulletL,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.bulletL,x,y ,null);
 		}else if(Dir.RIGHT.equals(dir)){
-			g.drawImage(ResourceManager.bulletR,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.bulletR,x,y ,null);
 		} else if (Dir.UP.equals(dir)) {
-			g.drawImage(ResourceManager.bulletU,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.bulletU,x,y ,null);
 		} else if (Dir.DOWN.equals(dir)) {
-			g.drawImage(ResourceManager.bulletD,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.bulletD,x,y ,null);
 		}
 
 		move();
 	}
 
-	private void move() {
+	protected void move() {
 		switch (dir) {
 		case LEFT:
 			x -= SPEED;
@@ -81,5 +81,13 @@ public class Bullet {
 		if (x < 0 || y < 0 || x > TankClient.GAME_WIDTH || y > TankClient.GAME_HEIGHT) {
 			live = false;
 		}
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 }

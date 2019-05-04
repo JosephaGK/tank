@@ -12,12 +12,12 @@ public class Tank {
 	/**
 	 * 位置坐标xy
 	 */
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 	/**
 	 * 方向
 	 */
-	private Dir dir = Dir.DOWN;
+	protected Dir dir = Dir.DOWN;
 	/**
 	 * 坦克速度
 	 */
@@ -27,7 +27,10 @@ public class Tank {
 	 */
 	private boolean moving = false;
 
-	private TankClient tf = null;
+	protected TankClient tf = null;
+
+	public Tank() {
+	}
 
 	public Tank(int x, int y, Dir dir, TankClient tf) {
 		super();
@@ -44,13 +47,13 @@ public class Tank {
 //		g.setColor(c);
 
 		if(Dir.LEFT.equals(dir)){
-			g.drawImage(ResourceManager.tankL,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.tankL,x,y,null);
 		}else if(Dir.RIGHT.equals(dir)){
-			g.drawImage(ResourceManager.tankR,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.tankR,x,y,null);
 		} else if (Dir.UP.equals(dir)) {
-			g.drawImage(ResourceManager.tankU,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.tankU,x,y,null);
 		} else if (Dir.DOWN.equals(dir)) {
-			g.drawImage(ResourceManager.tankD,x,y,Color.BLACK,null);
+			g.drawImage(ResourceManager.tankD,x,y,null);
 		}
 		move();
 	}
