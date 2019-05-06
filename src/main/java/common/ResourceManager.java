@@ -1,8 +1,12 @@
 package common;
 
+import com.sun.imageio.plugins.common.ImageUtil;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResourceManager {
 	public static BufferedImage tankU;
@@ -10,27 +14,17 @@ public class ResourceManager {
 	public static BufferedImage tankL;
 	public static BufferedImage tankR;
 
+	public static BufferedImage enemyTankU;
+	public static BufferedImage enemyTankD;
+	public static BufferedImage enemyTankL;
+	public static BufferedImage enemyTankR;
+
 	public static BufferedImage bulletU;
 	public static BufferedImage bulletD;
 	public static BufferedImage bulletL;
 	public static BufferedImage bulletR;
 
-	public static BufferedImage e1;
-	public static BufferedImage e2;
-	public static BufferedImage e3;
-	public static BufferedImage e4;
-	public static BufferedImage e5;
-	public static BufferedImage e6;
-	public static BufferedImage e7;
-	public static BufferedImage e8;
-	public static BufferedImage e9;
-	public static BufferedImage e10;
-	public static BufferedImage e11;
-	public static BufferedImage e12;
-	public static BufferedImage e13;
-	public static BufferedImage e14;
-	public static BufferedImage e15;
-	public static BufferedImage e16;
+	public static List<BufferedImage> explodes = new ArrayList<>();
 
 	static {
 		try {
@@ -44,22 +38,9 @@ public class ResourceManager {
 			bulletL = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/bulletL.gif"));
 			bulletR = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/bulletR.gif"));
 
-			e1 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e1.gif"));
-			e2 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e2.gif"));
-			e3 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e3.gif"));
-			e4 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e4.gif"));
-			e5 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e5.gif"));
-			e6 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e6.gif"));
-			e7 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e7.gif"));
-			e8 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e8.gif"));
-			e9 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e9.gif"));
-			e10 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e10.gif"));
-			e11 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e11.gif"));
-			e12 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e12.gif"));
-			e13 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e13.gif"));
-			e14 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e14.gif"));
-			e15 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e15.gif"));
-			e16 = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e16.gif"));
+			for (int i = 1; i <= 16; i++) {
+				explodes.add(ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("images/e"+i+".gif")));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
