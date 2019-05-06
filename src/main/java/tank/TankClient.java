@@ -29,7 +29,7 @@ public class TankClient extends Frame {
 	/**
 	 * 敌人坦克集合
 	 */
-	List<EnemyTank> enemyTankList = new ArrayList<>();
+	public List<EnemyTank> enemyTankList = new ArrayList<>();
 	/**
 	 * 敌人子弹集合
 	 */
@@ -48,8 +48,6 @@ public class TankClient extends Frame {
 		setTitle("tank war");
 		//设置窗口可见
 		setVisible(true);
-		//初始化敌人坦克
-		initEnemyTank();
 		//增加按键监听器
 		this.addKeyListener(new MyKeyListener());
 
@@ -60,12 +58,6 @@ public class TankClient extends Frame {
 				System.exit(0);
 			}
 		});
-	}
-
-	private void initEnemyTank() {
-		for (int i = 0; i < 2; i++) {
-			this.enemyTankList.add(new EnemyTank(100 * i, 100, Dir.DOWN, this));
-		}
 	}
 
 	Image offScreenImage = null;
@@ -117,22 +109,11 @@ public class TankClient extends Frame {
 		for (int i = 0; i < explodeList.size(); i++) {
 			explodeList.get(i).paint(g);
 		}
-		//增加敌人坦克
-		if (Util.r.nextInt(10) > 8) {
-			if (enemyTankList.size() <5) {
-				this.enemyTankList.add(new EnemyTank(400, 10, Dir.DOWN, this));
-			}
-		}
 		checkExplode();
 	}
 
 	private void checkExplode() {
 		checkHitEnemy();
-		checkHieMe();
-	}
-
-	private void checkHieMe() {
-
 	}
 
 	private void checkHitEnemy() {
@@ -154,9 +135,6 @@ public class TankClient extends Frame {
 				}
 			}
 		}
-//		for (int i = 0; i < bullets.size(); i++) {
-//
-//		}
 	}
 
 	class MyKeyListener extends KeyAdapter {
