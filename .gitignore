@@ -3,3 +3,4 @@
 .idea/
 tank.iml
 /.gitignore
+/META-INF/MANIFEST.MF
